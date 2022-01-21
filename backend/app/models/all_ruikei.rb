@@ -1,0 +1,2 @@
+class AllRuikei < ApplicationRecord
+end

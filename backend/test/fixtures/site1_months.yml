@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  novel_url: MyText
+  author: MyString
+  author_url: MyText
+  description: MyText
+  peges: MyString
+  words: MyString
+  kinds: MyString
+  tag0: MyText
+  tag1: MyText
+  tag2: MyText
+  tag3: MyText
+  tag4: MyText
+  tag5: MyText
+  tag6: MyText
+  tag7: MyText
+  tag8: MyText
+  tag9: MyText
+  tag10: MyText
+
+two:
+  title: MyString
+  novel_url: MyText
+  author: MyString
+  author_url: MyText
+  description: MyText
+  peges: MyString
+  words: MyString
+  kinds: MyString
+  tag0: MyText
+  tag1: MyText
+  tag2: MyText
+  tag3: MyText
+  tag4: MyText
+  tag5: MyText
+  tag6: MyText
+  tag7: MyText
+  tag8: MyText
+  tag9: MyText
+  tag10: MyText

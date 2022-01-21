@@ -1,0 +1,2 @@
+class AllYear < ApplicationRecord
+end
