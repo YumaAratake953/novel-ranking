@@ -6,23 +6,25 @@
 
 # frontend/node_modules/.bin
 .bin/
+bin/
+
 
 # Ignore bundler config.
-/.bundle
+.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
+log/*
+tmp/*
 !/log/.keep
 !/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-/tmp/pids/*
+tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
 
 # Ignore uploaded files in development.
-/storage/*
+storage/*
 !/storage/.keep
 .byebug_history
 
