@@ -4,7 +4,7 @@
 
 ## DEMO
 
-![](https://drive.google.com/file/d/1niNGypCinAUAJJor0yEI2hw01SG00138/view?usp=sharing)
+![demoImage](https://drive.google.com/file/d/1niNGypCinAUAJJor0yEI2hw01SG00138/view?usp=sharing)
 
 ## Features
 
@@ -28,9 +28,9 @@
 
 ## Installation
 
-- 基本的には[この](https://qiita.com/kazama1209/items/5c07d9a65ef07a02a4f5)サイトを参考にしてDockerfileやdocker-compose.ymlを記述し，以下の順でコマンドを実行すれば勝手にrailsやreactはインストールが完了する
+- 基本的には[このサイト](https://qiita.com/kazama1209/items/5c07d9a65ef07a02a4f5)を参考にしてDockerfileやdocker-compose.ymlを記述し，以下の順でコマンドを実行すれば勝手にrailsやreactはインストールが完了する
     1. 'docker-compose run api rails new . --force --no-deps -d mysql --api' <- apiとしてバックエンドを開発する場合
-    2. ここでdetabase.ymlを[この](https://qiita.com/kazama1209/items/5c07d9a65ef07a02a4f5)サイトを参考にして記述する
+    2. ここでdetabase.ymlを[このサイト](https://qiita.com/kazama1209/items/5c07d9a65ef07a02a4f5)を参考にして記述する
     3. 'docker-compose build'
     4. 'docker-compose run front yarn create react-app react-app --template typescript'
 
