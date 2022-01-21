@@ -4,7 +4,7 @@
 
 ## DEMO
 
-![demoImage](https://drive.google.com/file/d/1niNGypCinAUAJJor0yEI2hw01SG00138/view?usp=sharing)
+![demoImage](https://github.com/YumaAratake953/novel-ranking/blob/main/image/React%20App%20-%20Google%20Chrome%202022_01_15%2019_30_51.png)
 
 ## Features
 
