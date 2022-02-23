@@ -42822,3 +42822,20 @@ Processing by GraphqlController#execute as */*
 Completed 200 OK in 765ms (Views: 125.9ms | ActiveRecord: 15.5ms | Allocations: 86063)
 
 
+Started POST "/graphql" for 172.18.0.1 at 2022-02-22 18:50:51 +0900
+  [1m[35m (9.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by GraphqlController#execute as */*
+  Parameters: {"variables"=>{}, "query"=>"{\n  site2Days {\n    id\n    title\n    novelUrl\n    author\n    authorUrl\n    description\n    peges\n    kinds\n    __typename\n  }\n}\n", "graphql"=>{"variables"=>{}, "query"=>"{\n  site2Days {\n    id\n    title\n    novelUrl\n    author\n    authorUrl\n    description\n    peges\n    kinds\n    __typename\n  }\n}\n"}}
+  [1m[36mSite2Day Load (17.0ms)[0m  [1m[34mSELECT `site2_days`.* FROM `site2_days`[0m
+  ↳ app/controllers/graphql_controller.rb:15:in `execute'
+Completed 200 OK in 1303ms (Views: 87.1ms | ActiveRecord: 27.3ms | Allocations: 110915)
+
+
+Started POST "/graphql" for 172.18.0.1 at 2022-02-22 18:51:02 +0900
+Processing by GraphqlController#execute as */*
+  Parameters: {"variables"=>{}, "query"=>"{\n  site2Days {\n    id\n    title\n    novelUrl\n    author\n    authorUrl\n    description\n    peges\n    kinds\n    __typename\n  }\n}\n", "graphql"=>{"variables"=>{}, "query"=>"{\n  site2Days {\n    id\n    title\n    novelUrl\n    author\n    authorUrl\n    description\n    peges\n    kinds\n    __typename\n  }\n}\n"}}
+  [1m[36mSite2Day Load (7.2ms)[0m  [1m[34mSELECT `site2_days`.* FROM `site2_days`[0m
+  ↳ app/controllers/graphql_controller.rb:15:in `execute'
+Completed 200 OK in 483ms (Views: 79.6ms | ActiveRecord: 7.2ms | Allocations: 86262)
+
+
