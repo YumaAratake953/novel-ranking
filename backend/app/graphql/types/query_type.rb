@@ -1,41 +1,72 @@
 module Types
   class QueryType < Types::BaseObject
-    # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
-
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
+    
     # TODO: remove me
-    # field :test_field, String, null: false,
-    #   description: "An example field added by the generator"
-    # def test_field
-    #   "Hello Worldddddddd!"
-    # end
-
-    # ##### ここから追加
-    # field :current_date, String, null: false, description: '今日の日付'
-    # def current_date
-    #   Date.today.strftime("%Y年 %m月 %d日")
-    # end
-
-    # field :today_weather, WeatherType, null: false, description: '今日の天気'
-    # def today_weather
-    #   { weather: '晴れ', temperature: 60 }
-    # end
-
-    # field :users, [Types::UserType], null: false
-    # def users
-    #   Site1.all
-    # end
+    field :all_days, [Types::AllDayType], null: true
+    def all_days
+      AllDay.all
+    end
+    field :all_months, [Types::AllMonthType], null: true
+    def all_months
+      AllMonth.all
+    end
+    field :all_years, [Types::AllYearType], null: true
+    def all_years
+      AllYear.all
+    end
+    field :all_ruikeis, [Types::AllRuikeiType], null: true
+    def all_ruikeis
+      AllRuikei.all
+    end
     field :site1_days, [Types::Site1DayType], null: true
     def site1_days
       Site1Day.all
     end
+    # field :site1_months, [Types::Site1MonthType], null: true
+    # def site1_months
+    #   Site1Months.all
+    # end
+    # field :site1_years, [Types::Site1YearType], null: true
+    # def site1_years
+    #   Site1Years.all
+    # end
+    # field :site1_ruikeis, [Types::Site1RuikeiType], null: true
+    # def site1_ruikeis
+    #   Site1Ruikeis.all
+    # end
     field :site2_days, [Types::Site2DayType], null: true
     def site2_days
       Site2Day.all
     end
+    # field :site2_months, [Types::Site2MonthType], null: true
+    # def site2_months
+    #   Site2Month.all
+    # end
+    # field :site2_years, [Types::Site2YearType], null: true
+    # def site2_years
+    #   Site2Year.all
+    # end
+    # field :site2_ruikeis, [Types::Site2RuikeiType], null: true
+    # def site2_ruikeis
+    #   Site2Ruikei.all
+    # end
+    # field :site3_days, [Types::Site3DayType], null: true
+    # def site3_days
+    #   Site3Day.all
+    # end
+    # field :site3_months, [Types::Site3MonthType], null: true
+    # def site3_months
+    #   Site3Month.all
+    # end
+    # field :site3_years, [Types::Site3YearType], null: true
+    # def site3_years
+    #   Site3Year.all
+    # end
+    # field :site3_ruikeis, [Types::Site3RuikeiType], null: true
+    # def site3_ruikeis
+    #   Site3Ruikei.all
+    # end
   end
 end

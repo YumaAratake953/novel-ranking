@@ -11,12 +11,15 @@ import Paper from '@material-ui/core/Paper'
 import { useQuery } from '@apollo/client'
 import { GET_NOVEL1DAY } from '../graphql/query'
 import { GET_NOVEL2DAY } from '../graphql/query'
+import { GET_ALLDAY } from '../graphql/query'
+import { GET_ALLMONTH } from '../graphql/query'
+import { GET_ALLYEAR } from '../graphql/query'
+import { GET_ALLRUIKEI } from '../graphql/query'
 
 
 
 export const NovelList: React.FC = () => {
-  //const { loading, error, data } = useQuery(GET_NOVEL1DAY);
-  const { loading, error, data } = useQuery(GET_NOVEL2DAY);
+  const { loading, error, data } = useQuery(GET_ALLRUIKEI);
 
   if (loading) return <p>...loading</p>;
   if (error) return <p>{error.message}</p>;
@@ -36,7 +39,7 @@ export const NovelList: React.FC = () => {
         </TableHead>
         <TableBody>
           {
-            data.site2Days.map((novel: Novel) => {
+            data.allRuikeis.map((novel: Novel) => {
               return (
                 <NovelItem
                   novel={novel}

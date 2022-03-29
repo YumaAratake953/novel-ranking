@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   end
 
   post '/graphql', to: 'graphql#execute'
+  #get '/search', to: "search#search"
+  #get '/ranking', to: 'ranking#ranking' 
 end

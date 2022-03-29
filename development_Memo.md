@@ -29,15 +29,11 @@
     * string:point
     * string:tag
     
-- ポイント補正用の各サイト元ポイント
-    * 小説家になろう：補正値0
-        * 769,000 725,000 702,000 634,000 597,000
-    * カクヨム：補正値20
-        * 34,000 25,000 19,000 24,000 12,000
-    * ノベルアップ：補正値2
-        * 296,000 250,000 234,000 133,000
-    * アルファポリス：
-        * 
+- ランキング方法
+    * 各サイトからデータ抽出時に，ポイントの最大値が最も低いサイトの桁数に合わせる
+    * 現状カクヨムの最高値が41,232であるため5桁までを正規表現で抽出する
+    * 3059332
+
 
 - 開発方法
     0. 環境構築はここ（https://qiita.com/kazama1209/items/5c07d9a65ef07a02a4f5）を参考にするとよい
@@ -90,18 +86,20 @@
     11. octopaseで取得したデータをデータベースにエクスポートする
         * octopaseでデータを抽出したら，「detabaseにエクスポート」を選択
         - detabaseの詳細を聞かれるので答える，
+            * データベースを起動する
             * データベースの種類はMySql
+            * サーバーは「localhost」
+            * ポートは3305
             * パスワードは「password」
             * エンコーディングはuth8mb4
             * データベース名は手順通りやっているのであれば「myapp_development」
             * それ以外は基本そのまま
-            * 自分のデータベースの詳細はなんかのコマンドで確認できる
         * 後は画面にしたがってやってくだけ
         - それぞれのページのスクレイピング結果のエクスポート先
             * カクヨム　⇒　site1
             * ノベルアップ　⇒ site2
-            * エブリスタ　⇒ site3
-            * 小説家になろう　⇒　site4
+            * 小説家になろう　⇒ site3
+            * エブリスタ　⇒　site4
     12. テーブルの確認
         * 「docker-compose run api rails dbconsole」
         * ちなみにDBのパスワードは「password」
@@ -139,7 +137,7 @@
         <ListItemText>
           <Link to="/page_a">{text}</Link>
         </ListItemText>
-    18. 取り敢えずrailsでGraphQLを使えるようにする
+    18. railsでGraphQLを使えるようにする
         * 以下をgemfileに追加する
           gem 'graphql'          
           group :development do
@@ -158,7 +156,52 @@
     20. frontでGrahpQLを使えるようにする
         * docker-compose run front npm install @apollo/client graphql
         * https://qiita.com/ozaki25/items/f4fc0e2a2ad4646cf8df
-        * 上記のサイトを参考にする                    
+        * 上記のサイトを参考にする
+    21. 小説家になろうのAPIを叩く
+        - 叩きたいAPIについて調べる
+            * 大体デベロッパーのようなAPIからの情報取得方法をまとめたサイトがある
+        - 検索して情報が表示されるか調べる
+            * 「https://api.syosetu.com/novelapi/api/?order=dailypoint」で検索すると日間のランキング情報が取得される
+            * 上記のURLの「?order=」の後の文字列はAPI毎に違う
+        - 作成したコントローラー内で以下のように記述する
+        ```
+        class SearchController < ApplicationController
+            require 'net/http'
+            require 'json'
+            require 'logger'   #デバック用
+            require 'uri'
+
+            def search
+                Site3Ruikei.destroy_all   #古いデータを消す 
+
+                u = URI.parse("https://api.syosetu.com/novelapi/api/?out=json&order=hyoka")
+                response = Net::HTTP.get_response(u)
+                result = JSON.parse(response.body)
+                result.delete_at(0) #1つ目の要素は小説総数であるためいらない
+                site3[0].title = result[0]["title"]
+                site3[0].point = result[0]["global_point"]
+                site3[0].save
+                
+            end
+        end
+        ```
+        * 上記のプログラムは一つのデータしか取得できないため複数取得したい場合はそのようにプログラムを変更する必要あり
+    22. クローラー(Octoparse)を使い情報を確保する
+        * 小説家になろうのAPIからでは小説ＵＲＬを取得できないため，情報の取得方法をクローラーによるスクレイピングに変更
+        * タスクの量が無料プラン上限を迎えたので，タスクのURLだけを変更する荒業で解決
+    23. ランキング情報を統合する
+        * 現状，表示する際にフロント側で統合すると表示までの時間が長くなることが考えられるため，予め統合したデータベースを用意する
+        * ランキングを統合し，データベースに格納する用のcontrollerを宣言する
+        * 現状のデータベースへのデータの入れ方が冗長であると思われるので改善の余地あり
+        * routesに以下を追加する
+        ```
+        get '/ranking', to: 'ranking#ranking' 
+        ```
+    24. 
+    
+        
+
+                        
 
 ## 開発中のエラー
 * dockerを使って開発を行う場合基本的にはコマンドの最初に「docker-compose run --rm app」が必要になる
@@ -236,5 +279,16 @@
     
 - dockerで何か使用とすると取り敢えず「Error response from daemon: invalid mount config for type "bind": bind source path does not exist: /tmp/dockerdir」と怒られる
     * ないと言われている箇所にtmp/dockerdirディレクトリを作成すると解決
+
+- 「uninitialized constant Net::HTTP」
+    * railsでAPIを叩こうとすると出た
+    * 本番環境ではプログラム上部に以下の文が必要であるらしい
+    「require 'net/http'」
+
+- 「809: unexpected token at '---」
+    * railsでAPIからjson形式でファイルを受け取ろうとすると出た
+    * json形式とは違う形式のデータを無理やりjson形式でもらおうとするとでる
+    * json形式でもらえるようにuriに「https://api.syosetu.com/novelapi/api/?order=hyoka&out=json」というように追加する
+    * APIによってはクエリの文は異なる可能性あり
     
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_052834) do
+ActiveRecord::Schema.define(version: 2022_03_25_125331) do
 
   create_table "all_days", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
@@ -384,8 +384,8 @@ ActiveRecord::Schema.define(version: 2021_10_15_052834) do
     t.string "author"
     t.text "author_url"
     t.text "description"
-    t.integer "peges"
-    t.integer "words"
+    t.string "peges"
+    t.string "words"
     t.string "kinds"
     t.string "tag0"
     t.string "tag1"
@@ -399,6 +399,13 @@ ActiveRecord::Schema.define(version: 2021_10_15_052834) do
     t.string "tag9"
     t.string "tag10"
     t.string "point"
+    t.string "tag11"
+    t.string "tag12"
+    t.string "tag13"
+    t.string "tag14"
+    t.string "tag15"
+    t.string "tag16"
+    t.string "tag17"
   end
 
   create_table "site3_months", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -422,6 +429,13 @@ ActiveRecord::Schema.define(version: 2021_10_15_052834) do
     t.string "tag9"
     t.string "tag10"
     t.string "point"
+    t.string "tag11"
+    t.string "tag12"
+    t.string "tag13"
+    t.string "tag14"
+    t.string "tag15"
+    t.string "tag16"
+    t.string "tag17"
   end
 
   create_table "site3_ruikeis", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -446,6 +460,13 @@ ActiveRecord::Schema.define(version: 2021_10_15_052834) do
     t.string "tag8"
     t.string "tag9"
     t.string "tag10"
+    t.string "tag11"
+    t.string "tag12"
+    t.string "tag13"
+    t.string "tag14"
+    t.string "tag15"
+    t.string "tag16"
+    t.string "tag17"
   end
 
   create_table "site3_years", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -469,6 +490,13 @@ ActiveRecord::Schema.define(version: 2021_10_15_052834) do
     t.string "tag8"
     t.string "tag9"
     t.string "tag10"
+    t.string "tag11"
+    t.string "tag12"
+    t.string "tag13"
+    t.string "tag14"
+    t.string "tag15"
+    t.string "tag16"
+    t.string "tag17"
   end
 
 end
