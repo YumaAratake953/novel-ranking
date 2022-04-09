@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post '/graphql', to: 'graphql#execute'
   #get '/search', to: "search#search"
   #get '/ranking', to: 'ranking#ranking' 
+  get '/delete', to: 'dbdelete#dbdelete' 
 end

@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react'
+import React, { useEffect, useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Divider from '@material-ui/core/Divider'
@@ -11,19 +11,20 @@ import ListItemText from '@material-ui/core/ListItemText'
 import MenuIcon from '@material-ui/icons/Menu'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { NovelList } from "./NovelList"
-import { Novel } from "../interfaces/index"
+import { makeStyles, useTheme} from '@material-ui/core/styles'
 import { Link } from "react-router-dom"
 
-//import {NovelDrawer} from "./NovelDrawer"
+import { NovelList } from "./NovelList"
+import { DocumentNode} from '@apollo/client'
 
-// interface NovelMenuProps {
-//   novels: Novel[]
-//   setNovels: Function
-// }
+//表示するランキング情報をもらう引数
+interface NovelMenuProps {
+  per: String     //集計期間をもらう引数
+  menu: DocumentNode  //呼び出すクエリをもらう引数
+}
 
-const drawerWidth = 240;
+
+const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,41 +59,60 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NovelMenu: React.FC = () => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const classes = useStyles();
-  const theme = useTheme();
+
+
+
+export const NovelMenu: React.FC<NovelMenuProps> = ({per, menu}) => {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const classes = useStyles()
+  const theme = useTheme()
+
+  const link1 = [
+    {id: 1, period: '日間', linkname: '/'},
+    {id: 2, period: '月間', linkname: '/month'},
+    {id: 3, period: '年間', linkname: '/year'},
+    {id: 4, period: '累計', linkname: '/ruikei'}
+  ]
+  const link2 = [
+    {id: 1, period: '今日のおすすめ', linkname: '/recommend'},
+    {id: 2, period: 'タグ，ジャンル別検索', linkname: '/another'},
+  ]
+
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+    setMobileOpen(!mobileOpen)
+  }
 
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['日間', '月間','年間','累計'].map((text) => (
-          <ListItem button key={text}>
-            <ListItemText>
-              <Link to="/page_a">{text}</Link>
-            </ListItemText>
-          </ListItem>
+        {link1.map(e => (
+          <Link to={e.linkname}>
+            <ListItem button key={e.period}>
+              <ListItemText>
+                {e.period}
+              </ListItemText>
+            </ListItem>
+          </Link>
         ))}
       </List>
       <Divider />
-      <List>
-        {['今日のおすすめ', 'タグ・ジャンル別検索'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
+      {/* <List>
+        {link2.map(e => (
+          <ListItem button key={e.period}>
+            <ListItemText>
+              <Link to={e.linkname}>{e.period}</Link>
+            </ListItemText>
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </div>
   );
-  
 
   return (
+    <> 
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
@@ -107,7 +127,7 @@ export const NovelMenu: React.FC = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            日間ランキング
+            ネット小説総合ランキング！　{per}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -144,9 +164,10 @@ export const NovelMenu: React.FC = () => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Typography paragraph>
-          <NovelList />
+          <NovelList per={per} menu={menu} />
         </Typography>
       </main>
     </div>
-  );
+   </> 
+  )
 }

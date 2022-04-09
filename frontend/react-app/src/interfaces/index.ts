@@ -21,5 +21,12 @@ export interface Novel {
     tag8: string
     tag9: string
     tag10: string
+    tag11: string
+    tag12: string
+    tag13: string
+    tag14: string
+    tag15: string
+    tag16: string
+    tag17: string
 }
 

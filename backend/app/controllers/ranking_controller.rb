@@ -12,12 +12,13 @@ class RankingController < ApplicationController
         @i3 = 0     #小説家になろう
         #AllDay.destroy_all
         AllMonth.destroy_all
-        AllYear.destroy_all
-        AllRuikei.destroy_all
+        #AllYear.destroy_all
+        #AllRuikei.destroy_all
 
         #1位は基本的になろう作品を入れる
 
-        for i in 1..3 do
+        #for i in 0..3 do
+    
             @site1 = @site1s[i]   #カクヨム
             @site2 = @site2s[i]   #ノベルアップ
             @site3 = @site3s[i]   #小説家になろう
@@ -26,11 +27,17 @@ class RankingController < ApplicationController
             @i2 = 0     #ノベルアップ
             @i3 = 0     #小説家になろう
             #乱数でランキングを決める(0~45:なろう，46~75:カクヨム，75~100：ノベルアップ)
+            
+            
             loop do
                 x = rand(100)
                 if @count == 0 || (x <= 45 && @i3 < 500) then
+                    page = @site3[@i3].peges.delete("^0-9")
+                    if page == "" then
+                        page = "短編" 
+                    end
                     rank = @data[i].new(title: @site3[@i3].title, novel_url: @site3[@i3].novel_url, author: @site3[@i3].author, 
-                    author_url: @site3[@i3].author_url, description: @site3[@i3].description, peges: @site3[@i3].peges, words: @site3[@i3].words,
+                    author_url: @site3[@i3].author_url, description: @site3[@i3].description, peges: page, words: @site3[@i3].words,
                     kinds: @site3[@i3].kinds, point: @site3[@i3].point, tag0: @site3[@i3].tag0, tag1: @site3[@i3].tag1, tag2: @site3[@i3].tag2,
                     tag3: @site3[@i3].tag3,tag4: @site3[@i3].tag4,tag5: @site3[@i3].tag5,tag6: @site3[@i3].tag6,tag7: @site3[@i3].tag7,
                     tag8: @site3[@i3].tag8,tag9: @site3[@i3].tag9,tag10: @site3[@i3].tag10,tag11: @site3[@i3].tag11,tag12: @site3[@i3].tag12,
@@ -39,8 +46,12 @@ class RankingController < ApplicationController
                     rank.save
                     @i3 += 1
                 elsif x <= 75 && @i1 < 500 then
+                    page = @site1[@i1].peges.delete("^0-9")
+                    if page == "" then
+                        page = "短編" 
+                    end
                     rank = @data[i].new(title: @site1[@i1].title, novel_url: @site1[@i1].novel_url, author: @site1[@i1].author, 
-                    author_url: @site1[@i1].author_url, description: @site1[@i1].description, peges: @site1[@i1].peges, words: @site1[@i1].words,
+                    author_url: @site1[@i1].author_url, description: @site1[@i1].description, peges: page, words: @site1[@i1].words,
                     kinds: @site1[@i1].kinds, point: @site1[@i1].point, tag0: @site1[@i1].tag0, tag1: @site1[@i1].tag1, tag2: @site1[@i1].tag2,
                     tag3: @site1[@i1].tag3,tag4: @site1[@i1].tag4,tag5: @site1[@i1].tag5,tag6: @site1[@i1].tag6,tag7: @site1[@i1].tag7,
                     tag8: @site1[@i1].tag8,tag9: @site1[@i1].tag9,tag10: @site1[@i1].tag10)
@@ -50,8 +61,12 @@ class RankingController < ApplicationController
                 else 
                     if @i2 >= 500 
                         if @i3 < 500 then
+                            page = @site3[@i3].peges.delete("^0-9")
+                            if page == "" then
+                                page = "短編" 
+                            end
                             rank = @data[i].new(title: @site3[@i3].title, novel_url: @site3[@i3].novel_url, author: @site3[@i3].author, 
-                            author_url: @site3[@i3].author_url, description: @site3[@i3].description, peges: @site3[@i3].peges, words: @site3[@i3].words,
+                            author_url: @site3[@i3].author_url, description: @site3[@i3].description, peges: page, words: @site3[@i3].words,
                             kinds: @site3[@i3].kinds, point: @site3[@i3].point, tag0: @site3[@i3].tag0, tag1: @site3[@i3].tag1, tag2: @site3[@i3].tag2,
                             tag3: @site3[@i3].tag3,tag4: @site3[@i3].tag4,tag5: @site3[@i3].tag5,tag6: @site3[@i3].tag6,tag7: @site3[@i3].tag7,
                             tag8: @site3[@i3].tag8,tag9: @site3[@i3].tag9,tag10: @site3[@i3].tag10,tag11: @site3[@i3].tag11,tag12: @site3[@i3].tag12,
@@ -60,8 +75,12 @@ class RankingController < ApplicationController
                             rank.save
                             @i3 += 1
                         elsif @i1 < 500 then
+                            page = @site1[@i1].peges.delete("^0-9")
+                            if page == "" then
+                                page = "短編" 
+                            end
                             rank = @data[i].new(title: @site1[@i1].title, novel_url: @site1[@i1].novel_url, author: @site1[@i1].author, 
-                            author_url: @site1[@i1].author_url, description: @site1[@i1].description, peges: @site1[@i1].peges, words: @site1[@i1].words,
+                            author_url: @site1[@i1].author_url, description: @site1[@i1].description, peges: page, words: @site1[@i1].words,
                             kinds: @site1[@i1].kinds, point: @site1[@i1].point, tag0: @site1[@i1].tag0, tag1: @site1[@i1].tag1, tag2: @site1[@i1].tag2,
                             tag3: @site1[@i1].tag3,tag4: @site1[@i1].tag4,tag5: @site1[@i1].tag5,tag6: @site1[@i1].tag6,tag7: @site1[@i1].tag7,
                             tag8: @site1[@i1].tag8,tag9: @site1[@i1].tag9,tag10: @site1[@i1].tag10)
@@ -90,7 +109,8 @@ class RankingController < ApplicationController
                 end
                 
             end
-        end
+
+        #end
 
     end
 end

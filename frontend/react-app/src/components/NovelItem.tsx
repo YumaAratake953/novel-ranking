@@ -14,9 +14,8 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 
 interface NovelItemProps {
   novel: Novel
+  rank: Number
 }
-
-
 
 const useRowStyles = makeStyles({
   root: {
@@ -26,10 +25,14 @@ const useRowStyles = makeStyles({
   },
 });
 
-export const NovelItem: React.FC<NovelItemProps> = ({novel}) => {
+export const NovelItem: React.FC<NovelItemProps> = ({novel, rank}) => {
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
-
+  const tags = [novel.tag0, novel.tag1, novel.tag2, novel.tag3, novel.tag4, novel.tag5, novel.tag6, 
+                novel.tag7, novel.tag8, novel.tag9, novel.tag10, novel.tag11, novel.tag12, novel.tag13,
+                novel.tag14, novel.tag15, novel.tag16, novel.tag17]
+  
+                
   return (
     <React.Fragment>
       <TableRow className={classes.root}>
@@ -38,11 +41,11 @@ export const NovelItem: React.FC<NovelItemProps> = ({novel}) => {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell>{novel.id}</TableCell>
+        <TableCell>{rank}</TableCell>
         <TableCell scope="row" >
           <a href={novel.novelUrl}>{novel.title}</a>
         </TableCell>
-        <TableCell align="right"><a href={novel.authorUrl}>{novel.author}</a></TableCell>
+        <TableCell align="left"><a href={novel.authorUrl}>{novel.author}</a></TableCell>
         <TableCell align="right">{novel.kinds}</TableCell>
         <TableCell align="right">{novel.peges}</TableCell>
       </TableRow>
@@ -62,6 +65,15 @@ export const NovelItem: React.FC<NovelItemProps> = ({novel}) => {
                       {novel.description}
                     </TableCell>
                   </TableRow>
+                </TableBody>
+              </Table>
+              <Table>
+                <TableBody >
+                  {tags.map((tag: String) => {
+                    return (
+                     tag !== null && <TableCell style={{width: 'auto'}} >{tag}</TableCell>
+                    )
+                  })}
                 </TableBody>
               </Table>
             </Box>

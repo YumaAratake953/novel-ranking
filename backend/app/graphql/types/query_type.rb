@@ -2,8 +2,7 @@ module Types
   class QueryType < Types::BaseObject
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
-    
-    # TODO: remove me
+
     field :all_days, [Types::AllDayType], null: true
     def all_days
       AllDay.all
