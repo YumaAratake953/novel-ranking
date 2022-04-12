@@ -50,8 +50,13 @@ test:
 #
 production:
   <<: *default
-  database: <%= Rails.application.credentials.db[:database] %>
-  username: <%= Rails.application.credentials.db[:username] %>
-  password: <%= Rails.application.credentials.db[:password] %>
-  socket: <%= Rails.application.credentials.db[:socket] %>
-  host: <%= Rails.application.credentials.db[:host] %>
+  database: novel-ranking
+  username: root
+  password: tQfffpyPp5-#
+  socket: /var/lib/mysql/mysql.sock
+  host: db
+  # database: <%= Rails.application.credentials.db[:database] %>
+  # username: <%= Rails.application.credentials.db[:username] %>
+  # password: <%= Rails.application.credentials.db[:password] %>
+  # socket: <%= Rails.application.credentials.db[:socket] %>
+  # host: <%= Rails.application.credentials.db[:host] %>
