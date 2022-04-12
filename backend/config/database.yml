@@ -50,7 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: <%= Rails.application.credentials.db[:database] %>
-  username: <%= Rails.application.credentials.db[:username] %>
-  password: <%= Rails.application.credentials.db[:password] %>
+  database: backend
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: <%= Rails.application.credentials.db[:socket] %>
