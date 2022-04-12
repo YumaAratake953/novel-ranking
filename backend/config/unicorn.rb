@@ -1,5 +1,5 @@
 #app_path = File.expand_path('../../', __FILE__)
-app_path = File.expand_path('/var/www/アプリ名')
+app_path = File.expand_path('/var/www/novel-ranking/backend')
 
 #アプリケーションサーバの性能を決定する
 worker_processes 1
