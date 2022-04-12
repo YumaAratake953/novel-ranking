@@ -50,7 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: novel-ranking
+  database: myapp_development
   username: root
   password: <%= Rails.application.credentials.db[:password] %>
   socket: <%= Rails.application.credentials.db[:socket] %>
