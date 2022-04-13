@@ -33,7 +33,7 @@ export const NovelList: React.FC<NovelListProps> = ({per, menu}) => {
     let page_number = event['selected']; // クリックした部分のページ数が{selected: 2}のような形で返ってくる
     setOffset(page_number*perPage); // offsetを変更し、表示開始するアイテムの番号を変更
   }
-  const { loading, error, data, fetchMore } = useQuery(menu)
+  const { loading, error, data} = useQuery(menu)
   if (loading) return <p>...loading</p>
   if (error) return <p>{error.message}</p>
 
