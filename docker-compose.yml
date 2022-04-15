@@ -8,6 +8,7 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - ./tmp/dockerdir:/etc/mysql/conf.d/
+      - ./tmp/db:/var/lib/mysql/data
     ports:
       - 3305:3306 #ポートを3306から3305に変更
   api:

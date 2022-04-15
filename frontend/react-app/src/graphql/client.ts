@@ -1,8 +1,28 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import {
+  createHttpLink, ApolloClient, InMemoryCache, from,
+} from '@apollo/client';
+import { onError } from '@apollo/client/link/error';
 
-export default new ApolloClient({
-  link: new HttpLink({
-    uri: 'http://localhost:3000/graphql'
-  }),
-  cache: new InMemoryCache()
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3000/graphql',
 });
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  const errors = [];
+  if (graphQLErrors) {
+    graphQLErrors.forEach((err) => {
+      errors.push(err);
+    });
+  }
+
+  if (networkError) {
+    errors.push(networkError);
+  }
+
+});
+
+const apolloClient = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: from([errorLink, httpLink]),
+});
+
+export default apolloClient;
