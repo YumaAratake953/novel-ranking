@@ -31,11 +31,12 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
 # コンテナのポートを指定する
-EXPOSE 3000
+# herokuではEXPOSEがサポートされていないため，環境変数PORTを指定する
+ENV PORT 3000
+EXPOSE $PORT
 
-# コンテナの実行コマンド
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
-CMD ["sh", "/start.sh","rails", "server", "-b", "0.0.0.0"]
-# CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["sh", "/start.sh"]
+#CMD ["rails", "server", "-b", "0.0.0.0"]
 RUN ["apt-get", "install", "-y", "vim"]

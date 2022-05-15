@@ -1,6 +1,8 @@
 #!/bin/sh
 
-if [ "${RAILS_ENV}" = "prodction" ]
+if ["${RAILS_ENV}" = "prodction"]
 then
-    bundle exec rails assets:precompile
+    rails assets:precompile
 fi
+
+rails s -p ${PORT:-3000} -b 0.0.0.0
