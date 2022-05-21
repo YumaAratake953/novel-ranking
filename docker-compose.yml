@@ -32,7 +32,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./frontend:/usr/src/app
-    command: sh -c "cd react-app && yarn start"
+    command: sh -c "cd react-app && npm start"
     ports:
       - "8000:3000"
 volumes:

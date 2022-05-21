@@ -12,10 +12,6 @@ import ReactPaginate from 'react-paginate'
 
 import "../paginate.css"
 
-import { GET_ALLDAY } from '../graphql/query'
-import { GET_ALLMONTH } from '../graphql/query'
-import { GET_ALLYEAR } from '../graphql/query'
-import { GET_ALLRUIKEI } from '../graphql/query'
 import { DocumentNode, useQuery} from '@apollo/client'
 
 interface NovelListProps {

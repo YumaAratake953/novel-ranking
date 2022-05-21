@@ -11,7 +11,7 @@ class RankingController < ApplicationController
         @i2 = 0     #ノベルアップ
         @i3 = 0     #小説家になろう
         #AllDay.destroy_all
-        AllMonth.destroy_all
+        #AllMonth.destroy_all
         #AllYear.destroy_all
         #AllRuikei.destroy_all
 

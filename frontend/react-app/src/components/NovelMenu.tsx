@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Divider from '@material-ui/core/Divider'
@@ -73,10 +73,10 @@ export const NovelMenu: React.FC<NovelMenuProps> = ({per, menu}) => {
     {id: 3, period: '年間', linkname: '/year'},
     {id: 4, period: '累計', linkname: '/ruikei'}
   ]
-  const link2 = [
-    {id: 1, period: '今日のおすすめ', linkname: '/recommend'},
-    {id: 2, period: 'タグ，ジャンル別検索', linkname: '/another'},
-  ]
+  // const link2 = [
+  //   {id: 1, period: '今日のおすすめ', linkname: '/recommend'},
+  //   {id: 2, period: 'タグ，ジャンル別検索', linkname: '/another'},
+  // ]
 
 
   const handleDrawerToggle = () => {
