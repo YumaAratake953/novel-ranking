@@ -2,14 +2,14 @@
 
 "小説ランキングサイト"は小説投稿サイトのランキング情報をまとめて閲覧できるサイトでバックエンドはrails，フロントエンドはReactを用いて開発されています
 
-## DEMO
+## Page
 
-![demoImage](https://github.com/YumaAratake953/novel-ranking/blob/main/image/React%20App%20-%20Google%20Chrome%202022_01_15%2019_30_51.png)
+https://rails-react-novel-front.herokuapp.com/
 
 ## Features
 
-* 本サイトは，複数ある小説投稿サイトの日間や月間のランキング情報を取得して，まとめて表示するサイトです
-* 本サイトはAPIファーストで開発を行っているため，フロントエンドとバックエンドを切り離して開発を行っています．そのため，メンテナンスが容易とっており，今後インターフェースが多様化していった場合でも対応ができます
+* 本サイトは，複数ある小説投稿サイトの日間や月間等の期間ランキング情報を取得して，まとめて表示するサイトです
+* 本サイトはバックエンドをAPIとして開発し，フロントエンドからはGraphQLを用いて問い合わせを行っており，それぞれ別のコンテナで開発を行っています．
 
 ## Requirement
 
@@ -25,6 +25,8 @@
 * graphql 14.7.0
 * react-apollo 3.1.5
 * react-router-dom 5.2.1
+* heroku
+* JawsDB Leopard Shared
 
 ## Installation
 
@@ -58,12 +60,15 @@
 
 ```bash
 git clone https://github.com/YumaAratake953/novel-ranking.git
+docker-compose run api bundle install 
+docker-compose run front npm install
+docker-compose build
 docker-compose up -d
 ```
 
 ## Author
 
 * 荒武 佑磨
-* 高知工科大学 情報学群4年
-* asketb0306@gmail.com
+* 高知工科大学大学院 情報学コース1年
+* asketb03061225@gmail.com
  
