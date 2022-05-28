@@ -41,7 +41,7 @@ export const NovelItem: React.FC<NovelItemProps> = ({novel, rank}) => {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell>{rank}</TableCell>
+        <TableCell>{String(rank)}</TableCell>
         <TableCell scope="row" >
           <a href={novel.novelUrl}>{novel.title}</a>
         </TableCell>

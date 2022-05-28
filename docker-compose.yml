@@ -10,7 +10,7 @@ services:
       - ./tmp/dockerdir:/etc/mysql/conf.d/
       - ./tmp/db:/var/lib/mysql/data
     ports:
-      - 3306:3306 #ポートを3306から3305に変更
+      - 3305:3306 
   api:
     build:
       context: ./backend/

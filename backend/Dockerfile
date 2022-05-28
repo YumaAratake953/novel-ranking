@@ -35,8 +35,8 @@ ENTRYPOINT ["entrypoint.sh"]
 ENV PORT 3000
 EXPOSE $PORT
 
-# COPY start.sh /start.sh
-# RUN chmod 744 /start.sh
-# CMD ["sh", "/start.sh"]
+#  COPY start.sh /start.sh
+#  RUN chmod 744 /start.sh
+#  CMD ["sh", "/start.sh"]
 CMD ["rails", "server", "-b", "0.0.0.0"]
 RUN ["apt-get", "install", "-y", "vim"]
