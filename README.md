@@ -3,10 +3,10 @@
 "小説ランキングサイト"は小説投稿サイトのランキング情報をまとめて閲覧できるサイトでバックエンドはrails，フロントエンドはReactを用いて開発されています
 
 ## Page
-*現在は以下のサイトでのリリースは停止しているため閲覧できません　
+- 現在は以下のサイトでのリリースは停止しているため閲覧できません
 https://rails-react-novel-front.herokuapp.com/
 
-*デモ動画は以下のdriveから閲覧できます
+- デモ動画は以下のdriveから閲覧できます
 https://drive.google.com/file/d/1V6uXAialENkTEegJmrEdo8ED1vD_f0sG/view?usp=sharing
 ## Features
 
