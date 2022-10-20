@@ -4,10 +4,10 @@
 
 ## Page
 - 現在は以下のサイトでのリリースは停止しているため閲覧できません
-https://rails-react-novel-front.herokuapp.com/
+    - https://rails-react-novel-front.herokuapp.com/
 
 - デモ動画は以下のdriveから閲覧できます
-https://drive.google.com/file/d/1V6uXAialENkTEegJmrEdo8ED1vD_f0sG/view?usp=sharing
+    - https://drive.google.com/file/d/1V6uXAialENkTEegJmrEdo8ED1vD_f0sG/view?usp=sharing
 ## Features
 
 * 本サイトは，複数ある小説投稿サイトの日間や月間等の期間ランキング情報を取得して，まとめて表示するサイトです
